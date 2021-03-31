@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Link from 'next/link';
+import Head from "next/head";
+import Link from "next/link";
 
-import styles from '../../styles/Character.module.css'
+import styles from "../../../styles/Character.module.css";
 
-const defaultEndpoint = 'https://rickandmortyapi.com/character';
+const defaultEndpoint = "https://rickandmortyapi.com/api/character";
 
 export async function getServerSideProps({ query }) {
   const { id } = query;
@@ -12,9 +12,9 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      data
-    }
-  }
+      data,
+    },
+  };
 }
 
 export default function Character({ data }) {
@@ -27,9 +27,7 @@ export default function Character({ data }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-         {name}
-        </h1>
+        <h1 className={styles.title}>{name}</h1>
         <div className="profile">
           <div className="profile-image">
             <img src={image} alt={name} />
@@ -38,34 +36,32 @@ export default function Character({ data }) {
             <h2>Character Details</h2>
             <ul>
               <li>
-                <strong>Name:</strong> { name }
+                <strong>Name:</strong> {name}
               </li>
               <li>
-                <strong>Status:</strong> { status }
+                <strong>Status:</strong> {status}
               </li>
               <li>
-                <strong>Gender:</strong> { gender }
+                <strong>Gender:</strong> {gender}
               </li>
               <li>
-                <strong>Species:</strong> { species }
+                <strong>Species:</strong> {species}
               </li>
               <li>
-                <strong>Location:</strong> { location }
+                <strong>Location:</strong> {location?.name}
               </li>
               <li>
-                <strong>Orignally From:</strong> { origin?.name }
+                <strong>Orignally From:</strong> {origin?.name}
               </li>
             </ul>
           </div>
         </div>
         <p className="back">
           <Link href="/">
-            <a>
-              Back to All Character
-            </a>
+            <a>Back to All Character</a>
           </Link>
         </p>
       </main>
     </div>
-  )
+  );
 }

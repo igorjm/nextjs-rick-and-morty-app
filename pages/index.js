@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import Link from "next/link";
 
-import styles from '../styles/Home.module.css'
+import styles from "../styles/Home.module.css";
 
-const defaultEndpoint = 'https://rickandmortyapi.com/character';
+const defaultEndpoint = "https://rickandmortyapi.com/api/character";
 
 export async function getServerSideProps() {
   const res = await fetch(defaultEndpoint);
@@ -12,22 +12,22 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data
-    }
-  }
+      data,
+    },
+  };
 }
 
 export default function Home({ data }) {
   const { info, results: defaultResults = [] } = data;
-  const [ results, updateResults ] = useState(defaultResults);
-  const [ page, updatePage] = useState({
+  const [results, updateResults] = useState(defaultResults);
+  const [page, updatePage] = useState({
     ...info,
-    current, defaultEndpoint
+    current: defaultEndpoint,
   });
   const { current } = page;
 
   useEffect(() => {
-    if ( current === defaultEndpoint ) return;
+    if (current === defaultEndpoint) return;
 
     async function request() {
       const res = await fetch(current);
@@ -35,19 +35,16 @@ export default function Home({ data }) {
 
       updatePage({
         current,
-        ...nextData.info
+        ...nextData.info,
       });
 
-      if( !nextData.info?.prev ) {
+      if (!nextData.info?.prev) {
         updateResults(nextData.results);
         return;
       }
 
-      updateResults(prev => {
-        return [
-          ...prev,
-          ...nextData.results
-        ]
+      updateResults((prev) => {
+        return [...prev, ...nextData.results];
       });
     }
 
@@ -55,11 +52,11 @@ export default function Home({ data }) {
   }, [current]);
 
   function handleLoadMore() {
-    updatePage(prev => {
+    updatePage((prev) => {
       return {
         ...prev,
-        current: page?.next
-      }
+        current: page?.next,
+      };
     });
   }
 
@@ -68,13 +65,13 @@ export default function Home({ data }) {
 
     const { currentTarget = {} } = e;
     const fields = Array.from(currentTarget?.elements);
-    const fieldQuery = fields.find(field => field.name === 'query');
+    const fieldQuery = fields.find((field) => field.name === "query");
 
-    const value = fieldQuery.value || '';
-    const endpoint = `https://rickandmortyapi.com/character/?name=${value}`;
+    const value = fieldQuery.value || "";
+    const endpoint = `https://rickandmortyapi.com/api/character/?name=${value}`;
 
     updatePage({
-      current: endpoint
+      current: endpoint,
     });
   }
 
@@ -86,21 +83,17 @@ export default function Home({ data }) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-         Wubba Lubba Dub dub!
-        </h1>
+        <h1 className={styles.title}>Wubba Lubba Dub dub!</h1>
 
-        <p className={styles.description}>
-          Rick and Morty Wiki
-        </p>
+        <p className={styles.description}>Rick and Morty Wiki</p>
 
-        <form className="search" onSubmit="handleOnSubmitSearch">
+        <form className="search" onSubmit={handleOnSubmitSearch}>
           <input name="query" type="search" />
           <button>Search</button>
         </form>
 
         <ul className={styles.grid}>
-          {results.map(result => {
+          {results.map((result) => {
             const { id, name, image } = result;
 
             return (
@@ -112,7 +105,7 @@ export default function Home({ data }) {
                   </a>
                 </Link>
               </li>
-            )
+            );
           })}
         </ul>
 
@@ -127,10 +120,10 @@ export default function Home({ data }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
     </div>
-  )
+  );
 }
