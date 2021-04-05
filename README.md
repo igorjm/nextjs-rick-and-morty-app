@@ -1,38 +1,79 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rick & Morty
+
+This is a simple Rick and Morty application where I fetch data from a public Rick and Morty API.
 
 ## Getting Started
 
-First, run the development server:
+You can download the project or use
 
-```bash
+```
+git clone git@github.com:igorjm/nextjs-crypto-tracker.git
+```
+
+### Prerequisites
+
+You will need to have NodeJS installed. Click [here](https://nodejs.org/en/download/) for download instruction.
+
+### Installing
+
+For installation you can run
+
+```
+npm install
+```
+
+or
+
+```
+yarn
+```
+
+## Running the project
+
+To run tests
+
+```
 npm run dev
-# or
+```
+
+or
+
+```
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running the tests
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+To run tests
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```
+npm run test
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+or
 
-## Learn More
+```
+yarn run test
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Built With
 
+- NextJS
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Authors
 
-## Deploy on Vercel
+- **Igor Melo** - [igorjm](https://github.com/igorjm)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+## Acknowledgments
 
+- This project is inspired by the [Colby Fayock](https://www.youtube.com/colbz/videos)
 
-https://rickandmortyapi.com/
+## This application is deployed in
+
+https://nextjs-rick-and-morty-app.vercel.app/
